@@ -27,3 +27,14 @@ def button(msg, textSize, x, y, width, height, color, hover, action=None):
     TextSurf, TextRect = text_objects(msg, textSize)
     TextRect.center = ((x+(width/2)),(y+(height/2)))
     gameDisplay.blit(TextSurf, TextRect)
+
+# Fade
+def fade(width, height):
+    fade = pygame.Surface((width, height))
+    fade.fill((0, 0 , 0))
+    for alpha in range(0, 300):
+        fade.set_alpha(alpha)
+        gameDisplay.fill((0, 0, 0))
+        gameDisplay.blit(fade, (0,0))
+        pygame.display.update()
+        pygame.time.delay(2)

@@ -27,21 +27,25 @@ pygame.mixer.music.play(-1)
 
 clock = pygame.time.Clock()
 
+# background imgae
+pygame.display.set_caption("background image") 
+displayImage = pygame.image.load("Game/Assets/anime_ghosthunt.jpg")
+
 def exitGame():
     pygame.quit()
     quit()
 
 def playGame():
+    components.fade(800, 600)
+    pygame.mixer.music.fadeout(2000)
+    pygame.mixer.music.load('Game/Assets/Ghost-Hunt-OST-Tennenkyara-wa-go-Aikyou.ogg')
+    pygame.mixer.music.play(-1)
     demoLevel.demo()
 
 # Start-up Menu
 def game_intro():
     intro = True
     while intro:
-        
-        # background imgae
-        pygame.display.set_caption("background image") 
-        displayImage = pygame.image.load("Game/Assets/anime_ghosthunt.jpg")
 
         for event in pygame.event.get():
             # print(event)
@@ -53,9 +57,9 @@ def game_intro():
         # interactive buttons
 
         # Start
-        components.button("Start", smallText, 150, 450, 100, 50, green, bright_green, playGame)
+        components.button("Start", smallText, 150, 500, 100, 50, green, bright_green, playGame)
         # Quit
-        components.button("Exit", smallText, 550, 450, 100, 50, red, bright_red, exitGame)
+        components.button("Exit", smallText, 550, 500, 100, 50, red, bright_red, exitGame)
 
         pygame.display.update()
         clock.tick(15)
