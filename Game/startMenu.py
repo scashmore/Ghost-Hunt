@@ -20,6 +20,11 @@ smallText = pygame.font.Font('freesansbold.ttf',20)
 
 pygame.display.set_caption('Ghost Hunt Demo')
 
+# background music
+pygame.mixer.init()
+pygame.mixer.music.load('Game/Assets/ghost_hunt_opening_1_hd_-7802281804015965868.ogg')
+pygame.mixer.music.play(-1)
+
 clock = pygame.time.Clock()
 
 def exitGame():
@@ -33,14 +38,17 @@ def playGame():
 def game_intro():
     intro = True
     while intro:
+        
+        # background imgae
+        pygame.display.set_caption("background image") 
+        displayImage = pygame.image.load("Game/Assets/anime_ghosthunt.jpg")
+
         for event in pygame.event.get():
             # print(event)
             if event.type == pygame.QUIT:
                 exitGame()
-        components.gameDisplay.fill(white)
-        TextSurf, TextRect = components.text_objects("Ghost Hunt", largeText)
-        TextRect.center = ((components.display_width/2),(components.display_height/2))
-        components.gameDisplay.blit(TextSurf, TextRect)
+        components.gameDisplay.fill(black)
+        components.gameDisplay.blit(pygame.transform.scale(displayImage, (960, 375)), ((components.display_width/2 - 960/2),(components.display_height/2 - 375/2)))
         
         # interactive buttons
 
