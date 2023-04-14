@@ -8,7 +8,7 @@ white = (255,255,255)
 # background music
 pygame.mixer.init()
 pygame.mixer.music.load('Game/Assets/Ghost-Hunt-OST-Tennenkyara-wa-go-Aikyou.ogg')
-pygame.mixer.music.play(-1)
+pygame.mixer.music.play(-1, fade_ms=2000)
 
 def demo():
     surface = pygame.display.set_mode((800, 600))
