@@ -25,7 +25,7 @@ pygame.display.set_caption('Ghost Hunt Demo')
 # background music
 pygame.mixer.init()
 pygame.mixer.music.load('Game/Assets/ghost_hunt_opening_1_hd_-7802281804015965868.ogg')
-pygame.mixer.music.play(-1, fade_ms=2000)
+pygame.mixer.music.play(-1, fade_ms = 2000)
 
 clock = pygame.time.Clock()
 
@@ -38,14 +38,14 @@ def exitGame():
     quit()
 
 def playGame():
-    components.fade(800, 600)
+    components.fade(600, 800)
     pygame.mixer.music.fadeout(2000)
     pygame.mixer.music.load('Game/Assets/Ghost-Hunt-OST-Tennenkyara-wa-go-Aikyou.ogg')
     pygame.mixer.music.play(-1, fade_ms=2000)
     demoLevel.demo()
 
 # Start-up Menu
-def game_intro():
+def gameIntro():
     intro = True
     while intro:
 
@@ -57,13 +57,12 @@ def game_intro():
         components.gameDisplay.blit(pygame.transform.scale(displayImage, (960, 375)), ((components.display_width/2 - 960/2),(components.display_height/2 - 375/2)))
         
         # interactive buttons
-
         # Start
         components.button("Start", smallText, 150, 500, 100, 50, darkGray, lightGray, playGame)
         # Quit
         components.button("Exit", smallText, 550, 500, 100, 50, darkGray, lightGray, exitGame)
 
         pygame.display.update()
-        clock.tick(15)
+        clock.tick(60)
     
-game_intro()
+gameIntro()
