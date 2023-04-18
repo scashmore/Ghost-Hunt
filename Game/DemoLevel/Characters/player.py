@@ -5,7 +5,8 @@ sheet = SpriteSheet("Game/Assets/GH_Sprites_Lin_Naru_Mai_v2.png")
 
 class Mai(pygame.sprite.Sprite):
 
-    def __init__(self):
+    def __init__(self, group):
+        super().__init__(group)
         down = sheet.image_at((198, 2, 35, 47))
         left = sheet.image_at((197, 50, 35, 47))
         right = sheet.image_at((198, 98, 35, 47))

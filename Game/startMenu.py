@@ -30,7 +30,6 @@ pygame.mixer.music.play(-1, fade_ms = 2000)
 clock = pygame.time.Clock()
 
 # background imgae
-pygame.display.set_caption("background image") 
 displayImage = pygame.image.load("Game/Assets/anime_ghosthunt.jpg")
 
 def exitGame():
@@ -54,7 +53,7 @@ def gameIntro():
             if event.type == pygame.QUIT:
                 exitGame()
         components.gameDisplay.fill(black)
-        components.gameDisplay.blit(pygame.transform.scale(displayImage, (960, 375)), ((components.display_width/2 - 960/2),(components.display_height/2 - 375/2)))
+        components.gameDisplay.blit(pygame.transform.scale(displayImage, (960, 375)), ((components.display_width/2 - 960/2), (components.display_height/2 - 375/2)))
         
         # interactive buttons
         # Start

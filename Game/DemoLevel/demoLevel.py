@@ -1,6 +1,7 @@
 import pygame
 import time
 from .Characters import player
+from .Camera import camera
 
 pygame.init()
 black = (0,0,0)
@@ -12,19 +13,22 @@ pygame.mixer.music.load('Game/Assets/Ghost-Hunt-OST-Tennenkyara-wa-go-Aikyou.ogg
 pygame.mixer.music.play(-1, fade_ms=2000)
 
 clock = pygame.time.Clock()
+displayImage = "Game\Assets\Maps\Map002.png" 
 
+# Camera
+cameraGroup = camera.CameraGroup(displayImage)
 
 # Player
-user = player.Mai()
+user = player.Mai(cameraGroup)
 playerGroup = pygame.sprite.Group()
 playerGroup.add(user)
-steps = 1
+steps = 2     
+
 
 def demo():
 
     surface = pygame.display.set_mode((800, 600))
-    pygame.display.set_caption("image")
-    # displayImage = pygame.image.load("Game\Assets\demoPlaceHolder.webp")
+    pygame.display.set_caption("SPR Level Demo")
     while True:
         surface.fill((255, 255, 255))
         pygame.mouse.set_visible(False)
@@ -49,8 +53,11 @@ def demo():
                     user.control(0, 0)
             pygame.display.update()
 
-        playerGroup.update(4)
-        playerGroup.draw(surface)
+        # surface.blit(displayImage, (0, 0))
+        # playerGroup.update(4)
+        cameraGroup.update(4)
+        cameraGroup.customDraw(user)
+        # playerGroup.draw(surface)
 
 
         clock.tick(60)
