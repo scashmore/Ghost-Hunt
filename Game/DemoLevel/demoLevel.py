@@ -2,6 +2,7 @@ import pygame
 import time
 from .Characters import player
 from .Camera import camera
+from .Text import text
 
 pygame.init()
 black = (0,0,0)
@@ -53,12 +54,10 @@ def demo():
                     user.control(0, 0)
             pygame.display.update()
 
-        # surface.blit(displayImage, (0, 0))
-        # playerGroup.update(4)
         cameraGroup.update(4)
         cameraGroup.customDraw(user)
-        # playerGroup.draw(surface)
 
+        # text.textBox(surface, (0,0,0), "This is supposed to be a really long block of text. Hopefully it is and hopefully it is wrapping, as that is the idea here.", (225,225,225))
 
         clock.tick(60)
         pygame.display.flip()
