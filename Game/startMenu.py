@@ -2,7 +2,7 @@ import pygame
 import time
 import random
 from Components import components
-from DemoLevel import demoLevel
+from DemoLevel.Trivia import trivia
 
 pygame.init()
 
@@ -10,7 +10,6 @@ black = (0,0,0)
 white = (255,255,255)
 
 red = (200,0,0)
-green = (0,200,0)
 darkGray = (34, 34, 34)
 lightGray = (105, 105, 105)
 
@@ -41,7 +40,7 @@ def playGame():
     pygame.mixer.music.fadeout(2000)
     pygame.mixer.music.load('Game/Assets/Ghost-Hunt-OST-Tennenkyara-wa-go-Aikyou.ogg')
     pygame.mixer.music.play(-1, fade_ms=2000)
-    demoLevel.demo()
+    trivia.triviaGame()
 
 # Start-up Menu
 def gameIntro():
@@ -62,6 +61,7 @@ def gameIntro():
         components.button("Exit", smallText, 550, 500, 100, 50, darkGray, lightGray, exitGame)
 
         pygame.display.update()
+        pygame.display.flip()
         clock.tick(60)
     
 gameIntro()

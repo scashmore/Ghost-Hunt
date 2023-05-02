@@ -2,8 +2,6 @@ import pygame
 import time
 from .Characters import player
 from .Camera import camera
-from .Text import text
-from .Trivia import trivia
 
 pygame.init()
 
@@ -36,8 +34,6 @@ def demo():
     while True:
         surface.fill((255, 255, 255))
         pygame.mouse.set_visible(False)
-
-        trivia.triviaGame(surface, displayImage)
 
         for event in pygame.event.get():
             print(event.type)

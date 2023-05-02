@@ -5,10 +5,13 @@ class Dialogue(pygame.sprite.DirtySprite):
     def __init__(self, screen, portrait, text, textColor):
         super().__init__()
         self.screen = screen
-        self.text = text
+        self.text: str = text
+        self.bold = False
+        self.size = 20
+        self.italic = False
         self.textColor = textColor
         self.portrait = portrait
-        self.font = pygame.font.SysFont("Arial", 20)
+        self.font = pygame.font.SysFont("Arial", self.size, self.bold, self.italic)
         self.height = screen.get_height()
         self.width = screen.get_width()
         self.maxWidth, self.maxHeight = [self.width - 20, (self.height // 4) - 15 ]
@@ -25,7 +28,7 @@ class Dialogue(pygame.sprite.DirtySprite):
         # snip = font.render(text, True, (225,225,225))
         # done = False
         portrait = pygame.image.load(self.portrait)
-        self.screen.blit(portrait, (480, 35))
+        self.screen.blit(portrait, (450, 35))
         pygame.draw.rect(self.screen, (0,0,0), (5, self.height - (self.height // 4) - 5, self.width - 10, self.height // 4), border_radius=20)
         pos = [30, self.height + 25 - self.height // 4]
         x, y = pos
@@ -41,7 +44,10 @@ class Dialogue(pygame.sprite.DirtySprite):
             x = pos[0]
             y += wordHeight
 
-    def update(self, text, portrait):
-        print(text)
+    def update(self, text, portrait, bold, italic, size):
+        self.size = size
+        self.bold = bold
+        self.italic = italic
+        self.font = pygame.font.SysFont("Arial", size, bold, italic)
         self.text = text
         self.portrait = portrait
